@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permutations and combinations</title>
+    <style>
+        body,input,button,p{
+            text-align: center;
+            font-size: xx-large;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 10px;
+        }
+        #btn{
+            border-radius: 10px;
+            padding: 5px;
+        }
+        #btn:hover{
+            box-shadow: 5px 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>Permutations and Combinations are in <sup>n</sup>P<sub>r</sub> ad <sup>n</sup>C<sub>r</sub> forms respectively.</header><br>
+        Enter the values:<br>
+        <label for="n">n: </label><input type="text" id="n"><br>
+        <label for="r">r: </label><input type="text" id="r"><br>
+        <button id="btn" onclick="pnc()">Solve</button>
+        <p id="output1"></p>
+        <p id="output2"></p>
+    </div>
+    <script>
+        function fac(n){
+            var fact=1;
+            for(var i=1;i<=n;i++){
+                fact*=i;
+            }
+            return fact;
+        }
+        function pnc(){
+            var n=document.querySelector('#n').value;
+            var r=document.querySelector('#r').value;
+            var Perm=(fac(n)/fac(n-r));
+            var comb=(fac(n)/(fac(r)*fac(n-r)));
+            document.querySelector('#output1').innerHTML="Permutation: "+n.sup()+"P"+r.sub()+" = ("+n+")!/("+n+"-"+r+")! = "+Perm;
+            document.querySelector('#output2').innerHTML="Combination: "+n.sup()+"C"+r.sub()+" = "+n+"!/["+r+"! X("+n+"-"+r+")!] = "+comb;
+        }
+    </script>
+</body>
+</html>
